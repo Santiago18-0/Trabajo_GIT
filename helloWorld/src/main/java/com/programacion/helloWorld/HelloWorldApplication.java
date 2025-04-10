@@ -1,14 +1,17 @@
 package com.programacion.helloWorld;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-@SpringBootApplication
 public class HelloWorldApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloWorldApplication.class, args);
-		System.out.println("Hello World");
+
+		var contexto = new AnnotationConfigApplicationContext(ConfigurationAplication.class);
+		SaludarBean saludar = contexto.getBean(SaludarBean.class);
+		saludar.helloWorld();
+
+		contexto.close();
+
 	}
 
 }
